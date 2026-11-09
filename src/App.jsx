@@ -24,7 +24,7 @@ function App() {
   return (
     <main className="mx-auto min-h-screen max-w-4xl px-5 pt-8 pb-20">
       <header className="mb-8 flex flex-wrap items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Movie App</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Movie App | 나의 영화 목록</h1>
         <div className="flex max-w-full flex-wrap items-center justify-end gap-3">
         <nav className="flex shrink-0 gap-2" aria-label="주 메뉴">
           <Link to="/" aria-label="영화 목록" title="영화 목록" className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 focus-visible:outline-2"><House className="size-5" strokeWidth={1.7} aria-hidden="true" /></Link>
