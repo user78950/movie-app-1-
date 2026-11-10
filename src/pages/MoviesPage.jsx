@@ -116,14 +116,13 @@ function MoviesPage({ isAdmin = false }) {
       }
 
       const data = await response.json();
-      // 실습: 이 위치에 결과가 0건일 때 GA로 이벤트를 보내는 코드를 추가합니다.
       if (
-        searchKeyword && 
+        searchKeyword &&
         data.length === 0 &&
         typeof window.gtag === "function"
       ) {
         window.gtag("event", "movie_search_no_results", {
-          search_term : searchKeyword,
+          search_term: searchKeyword,
         });
       }
       setMovies(data);
