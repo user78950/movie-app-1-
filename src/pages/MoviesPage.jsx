@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/react";
 import { apiUrl, getAuthHeaders } from "../api.js";
 import { useEffect, useState } from "react";
 
@@ -89,6 +90,7 @@ function MoviesPage({ isAdmin = false }) {
         const data = await response.json();
         setMovies(data);
       } catch (error) {
+        Sentry.captureException(error, { tags: { operation: "movie_list" } });
         console.error("영화 목록 요청 실패:", error);
         setError("영화 목록을 불러오지 못했습니다. 다시 시도해 주세요.");
       } finally {
@@ -127,6 +129,7 @@ function MoviesPage({ isAdmin = false }) {
       }
       setMovies(data);
     } catch (error) {
+      Sentry.captureException(error, { tags: { operation: "movie_search" } });
       console.error("영화 검색 실패:", error);
       setError("영화 목록을 불러오지 못했습니다. 다시 시도해 주세요.");
     } finally {

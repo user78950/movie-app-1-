@@ -7,8 +7,14 @@ export function useAuth() {
   const [isAdmin, setIsAdmin] = useState(undefined);
 
   useEffect(() => {
+    let currentUserId;
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, nextSession) => {
-      setIsAdmin(undefined);
+      const nextUserId = nextSession?.user?.id ?? null;
+      if (currentUserId !== nextUserId) {
+        setIsAdmin(undefined);
+        currentUserId = nextUserId;
+      }
       setSession(nextSession);
     });
     return () => subscription.unsubscribe();
